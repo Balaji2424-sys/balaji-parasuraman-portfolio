@@ -11,28 +11,37 @@
 </head>
 <body>
 
+  <div id="particles-js"></div>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
   <!-- ========== NAVBAR ========== -->
   <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo">BP<span class="dot">.</span></a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
+    <div class="navbar-inner">
+      <div class="navbar-left">
+        <a href="#hero" class="nav-logo">BP<span class="dot">.</span></a>
+      </div>
+      <div class="navbar-center">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="navbar-right nav-actions">
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
           <span class="icon-sun">&#9728;</span>
           <span class="icon-moon">&#9790;</span>
         </button>
-        <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="navMobile" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
     <ul class="nav-mobile" id="navMobile">
+      <li><a href="#hero" class="active">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -47,34 +56,47 @@
     <div class="hero-orb hero-orb-1"></div>
     <div class="hero-orb hero-orb-2"></div>
     <div class="hero-orb hero-orb-3"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow animate-fade" style="--i:0">
-        <span class="badge">&#10022; Available for Opportunities</span>
-      </div>
-      <h1 class="hero-name animate-fade" style="--i:1">
-        <span class="name-first">Balaji</span>
-        <span class="name-last">Parasuraman<span class="accent-dot">.</span></span>
-      </h1>
-      <p class="hero-title animate-fade" style="--i:2">Artificial Intelligence &amp; Data Science Student</p>
-      <div class="hero-intro animate-fade" style="--i:3">
-        <p class="intro-line intro-professional">
-          <span class="intro-quote">&ldquo;</span>Professionally, I am a passionate Artificial Intelligence and Data Science student focused on building impactful, technology-driven solutions.<span class="intro-quote">&rdquo;</span>
+    <div class="hero-container">
+
+      <div class="hero-left">
+
+        <div class="hero-eyebrow animate-fade" style="--i:0">
+          <span class="badge">&#10022; Available for Opportunities</span>
+        </div>
+
+        <p class="hero-mini-title">Developer | Problem Solver | Tech Enthusiast</p>
+
+        <h1 class="hero-name animate-fade" style="--i:1">
+          Balaji <span class="gradient-text">Parasuraman</span>
+        </h1>
+
+        <p class="hero-description animate-fade" style="--i:2">
+          Passionate about building impactful AI-driven solutions, geospatial
+          intelligence systems, and scalable full-stack applications. Bridging
+          innovation, sustainability, and technology.
         </p>
-        <p class="intro-line intro-personal">
-          <span class="intro-quote">&ldquo;</span>Personally, I am an optimistic individual who actively organizes and leads successful events with strong coordination and leadership skills.<span class="intro-quote">&rdquo;</span>
-        </p>
+
+        <div class="hero-cta animate-fade" style="--i:3">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="resume.pdf" download class="btn btn-outline">Download Resume</a>
+          <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">View Resume</a>
+        </div>
+
+        <div class="hero-socials animate-fade" style="--i:4" aria-label="Social links">
+          <a href="https://github.com/Balaji2424-sys" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/in/balaji2424-sys" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:balajidivya810@gmail.com">Mail</a>
+        </div>
       </div>
-      <div class="hero-tags animate-fade" style="--i:4">
-        <span class="tag">&#9670; Magic Member &ndash; Maths Club</span>
-        <span class="tag">&#9670; Magic Member &ndash; IEEE SVS</span>
-        <span class="tag">&#9670; IEEE OES Member</span>
-        <span class="tag">&#9670; Dept. Secretary</span>
-        <span class="tag">&#9670; Event Coordinator</span>
-      </div>
-      <div class="hero-cta animate-fade" style="--i:5">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="resume.pdf" download class="btn btn-outline">&#8659; Download Resume</a>
-        <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">View Resume &#8599;</a>
+
+      <div class="hero-right animate-fade" style="--i:1">
+
+        <div class="profile-wrapper" aria-label="Profile portrait">
+          <div class="profile-glow-ring"></div>
+          <div class="rotating-ring ring-dashed"></div>
+          <div class="rotating-ring ring-soft"></div>
+          <img src="assets/11.png" alt="Balaji Parasuraman" class="hero-profile-img" />
+        </div>
       </div>
     </div>
     <div class="hero-scroll-hint">

@@ -15,7 +15,58 @@ themeToggle.addEventListener('click', () => {
   const next    = current === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
   localStorage.setItem('bp-theme', next);
+  initParticles(next);
 });
+
+function initParticles(theme = document.documentElement.getAttribute("data-theme")) {
+  if (!window.particlesJS) return;
+
+  if (window.pJSDom && window.pJSDom.length) {
+    window.pJSDom.forEach(instance => instance.pJS.fn.vendors.destroypJS());
+    window.pJSDom = [];
+  }
+
+  const isDark = theme === "dark";
+
+  particlesJS("particles-js", {
+    particles: {
+      number: {
+        value: 70
+      },
+
+      color: {
+        value: isDark ? "#9b5cff" : "#6D38F2"
+      },
+
+      shape: {
+        type: "circle"
+      },
+
+      opacity: {
+        value: isDark ? 0.4 : 0.5
+      },
+
+      size: {
+        value: 2
+      },
+
+      move: {
+        enable: true,
+        speed: 1
+      },
+
+      line_linked: {
+        enable: true,
+        distance: 120,
+        color: isDark ? "#9b5cff" : "#6D38F2",
+        opacity: isDark ? 0.2 : 0.26,
+        width: 1
+      }
+    }
+  });
+}
+
+initParticles(savedTheme);
 
 // ── NAVBAR SCROLL STYLE ───────────────────────────────────────
 const navbar = document.getElementById('navbar');
@@ -28,14 +79,16 @@ const hamburger = document.getElementById('hamburger');
 const navMobile = document.getElementById('navMobile');
 
 hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  navMobile.classList.toggle('open');
+  const isOpen = hamburger.classList.toggle('open');
+  navMobile.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
 });
 
 navMobile.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('open');
     navMobile.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
   });
 });
 
@@ -88,16 +141,17 @@ skillFills.forEach(el => skillObserver.observe(el));
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a, .nav-mobile a');
 
+const setActiveNavLink = (id) => {
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+  });
+};
+
 const activeObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === '#' + entry.target.id) {
-            link.classList.add('active');
-          }
-        });
+        setActiveNavLink(entry.target.id);
       }
     });
   },
@@ -105,3 +159,5 @@ const activeObserver = new IntersectionObserver(
 );
 
 sections.forEach(s => activeObserver.observe(s));
+
+setActiveNavLink(location.hash ? location.hash.slice(1) : 'hero');
